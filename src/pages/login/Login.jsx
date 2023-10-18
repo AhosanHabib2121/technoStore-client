@@ -1,7 +1,82 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useContext } from "react";
+import { AuthContext } from "../../authProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { accountLogin, loginGoogle } = useContext(AuthContext);
+
+    const navigate = useNavigate()
+
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        // create account
+        accountLogin(email, password)
+            .then(data => {
+                const lastLoginAt = data.user?.metadata?.lastSignInTime;
+                        const userData = {
+                            email,
+                            password,
+                            lastLoginAt
+                        }
+                fetch('http://127.0.0.1:5000/user', {
+                    method: 'PATCH',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(userData)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Login successfully'
+                            })
+                            navigate('/')
+                        }
+                    })   
+            })
+            .catch(error => console.error(error.message))
+    }
+    // login with google
+    const handleGoogle = () => {
+        loginGoogle()
+            .then(() => {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Login successfully'
+                })
+                navigate('/')
+            })
+            .catch(error => console.log(error))
+    }
+    
     return (
         <div>
             <div className="pb-20 pt-14 px-8 md:px-0">
@@ -16,8 +91,7 @@ const Login = () => {
                         
                     </div>
                     <div className="card w-full">
-                        {/* onSubmit={handleLogin} */}
-                        <form  className=" px-8">
+                        <form onSubmit={handleLogin} className=" px-8">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-lg font-poppins font-medium ">Email</span>
@@ -43,8 +117,7 @@ const Login = () => {
                         {/* google button */}
                         <div className=" relative text-center mt-5">
                             <FcGoogle className=" text-3xl absolute top-2 left-16 md:left-36 " />
-                            {/* onClick={handleGoogle} */}
-                            <button className="btn bg-inherit hover:bg-inherit  outline-1  normal-case rounded-full w-64 border-gray-400">Continue with Google</button>
+                            <button onClick={handleGoogle} className="btn bg-inherit hover:bg-inherit  outline-1  normal-case rounded-full w-64 border-gray-400">Continue with Google</button>
                             
                     </div>
                     </div>

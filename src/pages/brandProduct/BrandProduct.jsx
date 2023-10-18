@@ -1,4 +1,4 @@
-import { useNavigate , useLoaderData,  } from "react-router-dom";
+import { useNavigate , useLoaderData, Link,  } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import sliderPhoto from '../../assets/techno-banner.jpg'
 import { useEffect } from "react";
@@ -62,9 +62,9 @@ const BrandProduct = () => {
                                 <h2 className=" font-medium text-base">{singleBrandName.short_description.slice(0, 60)}..</h2>
                                 
                                 <div className="card-actions justify-end my-3">
-                                    <button className="bg-[#82b440] px-5 py-2 rounded-lg font-medium hover:bg-[#538b0b] text-white normal-case">Details</button>
+                                    <Link to={`/productDetails/${singleBrandName._id}`} className="bg-[#82b440] px-5 py-3 rounded-lg font-medium hover:bg-[#538b0b] text-white normal-case">Details</Link>
 
-                                    <button className="bg-[#82b440] px-5 py-2 rounded-lg font-medium hover:bg-[#538b0b] text-white normal-case">Update</button>
+                                    <Link to={`/updateProduct/${singleBrandName._id}`} className="bg-[#82b440] px-5 py-3 rounded-lg font-medium hover:bg-[#538b0b] text-white normal-case">Update</Link>
                                 </div>
                             </div>
                         </div>)

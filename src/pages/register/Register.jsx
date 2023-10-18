@@ -1,6 +1,64 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../authProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
+    const { createAccount, profileUpdate } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const handleRegister = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const image_url = form.image_url.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        // create account
+        createAccount(email, password)
+            .then(data => {
+                // profile update
+                profileUpdate(name, image_url)
+                    .then(() => {
+                        const createdAt = data.user?.metadata.creationTime;
+                        const userData = {
+                            name,
+                            image_url,
+                            email,
+                            password,
+                            createdAt
+                        }
+                        fetch('http://127.0.0.1:5000/user', {
+                            method: 'POST',
+                            headers: { 'content-type': 'application/json' },
+                            body:JSON.stringify(userData)
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                    }
+                                })
+                                Toast.fire({
+                                icon: 'success',
+                                title: 'Account create successfully'
+                                })
+                                navigate('/')
+                            }
+                        })
+                    })
+            })
+            .catch(error => console.error(error.message))
+
+    }
     return (
         <div>
             <div className=" pt-14 pb-24 px-8 md:px-0">
@@ -15,8 +73,7 @@ const Register = () => {
                         
                     </div>
                     <div className="card w-full">
-                        {/* onSubmit={handleRegister} */}
-                        <form  className=" px-8">
+                        <form onSubmit={handleRegister}  className=" px-8">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-lg font-poppins font-medium ">Name</span>
