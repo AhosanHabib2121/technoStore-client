@@ -1,6 +1,8 @@
-import appleBrand from '../../assets/brand-image/apple-brand.jpg'
+import { useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const BrandName = () => {
+    const brandData = useLoaderData();
     return (
         <div className=" font-robotFont">
             {/* head title */}
@@ -14,16 +16,21 @@ const BrandName = () => {
             </div>
             {/* brand card */}
             <div className=" grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-7 gap-4">
-                <div className="card gap-4 items-center card-side bg-base-100 border-2 border-solid border-[#82b440]  rounded-lg">
-                    <figure className=' '><img src={appleBrand} className=' w-52' alt="not found"/></figure>
-                    <div className="">
-                        <h2 className="card-title text-lg">Apple Brand</h2>
+                {
+                    brandData.map(brand => <Link to={`/brandProduct/${brand.brand_name}`} key={brand._id}>
+                    <div className="card gap-4 items-center card-side bg-base-100 border-2 border-solid border-[#82b440]  rounded-lg">
+                        <figure className=' '><img src={brand.brand_image} className=' w-52  h-28' alt="not found"/></figure>
+                        <div className="">
+                            <h2 className="card-title text-lg">{brand.brand_name}</h2>
+                        </div>
                     </div>
-                </div>
+                    </Link>)
+                }
+                
 
 
 
-                <div className="card gap-4 items-center card-side bg-base-100 border-2 border-solid border-[#82b440]  rounded-lg">
+                {/* <div className="card gap-4 items-center card-side bg-base-100 border-2 border-solid border-[#82b440]  rounded-lg">
                     <figure className=' '><img src={appleBrand} className=' w-52' alt="not found"/></figure>
                     <div className="">
                         <h2 className="card-title text-lg">Apple Brand</h2>
@@ -52,7 +59,7 @@ const BrandName = () => {
                     <div className="">
                         <h2 className="card-title text-lg">Apple Brand</h2>
                     </div>
-                </div>
+                </div> */}
 
                 
             </div>
