@@ -1,19 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
     const { accountLogin, loginGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [error, setError] = useState(null)
 
-    const navigate = useNavigate()
 
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        //  error message clean
+        setError('')
+
+        if (password.length < 6) {
+            setError('Password must be 6 characters!');
+            return;
+        }
 
         // create account
         accountLogin(email, password)
@@ -47,11 +55,12 @@ const Login = () => {
                                 icon: 'success',
                                 title: 'Login successfully'
                             })
-                            navigate('/')
+                            form.reset();
+                            navigate('/');
                         }
                     })   
             })
-            .catch(error => console.error(error.message))
+            .catch(error => setError(`Please signUp then try. ${error.message}`))
     }
     // login with google
     const handleGoogle = () => {
@@ -85,9 +94,9 @@ const Login = () => {
                         <h1 className="text-5xl font-bold pt-6 text-[#82b440]">Login now!</h1>
                     </div>
                     <div className=' px-8 py-5'>
-                        {/* {
-                            errMessage?<p className=' text-red-500'>{errMessage }</p>:''
-                        } */}
+                        {
+                            error?<p className=' text-red-500'>{error}</p>:''
+                        }
                         
                     </div>
                     <div className="card w-full">

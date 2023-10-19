@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import Swal from "sweetalert2";
@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 const Register = () => {
     const { createAccount, profileUpdate } = useContext(AuthContext);
     const navigate = useNavigate()
+    const [error, setError] = useState(null)
+
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
@@ -13,6 +15,18 @@ const Register = () => {
         const image_url = form.image_url.value;
         const email = form.email.value;
         const password = form.password.value;
+
+        // error message clean
+        setError('')
+
+        if(password.length < 6){
+            setError('Password must be 6 characters!')
+            return;
+        }
+        else if (!/[A-Z]/.test(password) || !/[!@#$%^&*()]/.test(password)) {
+            setError('Please add capital letter and special character');
+            return;
+        }
 
         // create account
         createAccount(email, password)
@@ -51,12 +65,13 @@ const Register = () => {
                                 icon: 'success',
                                 title: 'Account create successfully'
                                 })
-                                navigate('/')
+                                form.reset();
+                                navigate('/');
                             }
                         })
                     })
             })
-            .catch(error => console.error(error.message))
+            .catch(error => setError(error.message))
 
     }
     return (
@@ -67,9 +82,9 @@ const Register = () => {
                         <h1 className="text-5xl font-bold pt-6 pb-2 text-[#82b440]">Register</h1>
                     </div>
                     <div className=' px-8 py-5'>
-                        {/* {
-                            errorMessage?<p className=' text-red-500'>{errorMessage }</p>:''
-                        } */}
+                        {
+                            error?<p className=' text-red-500'>{error }</p>:''
+                        }
                         
                     </div>
                     <div className="card w-full">

@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/technoStore-logo.png'
 import './Navbar.css'
+import { useContext } from "react";
+import { AuthContext } from "../../authProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+    const { user, loginOut} = useContext(AuthContext);
 
     const navLink = <>
         <li><NavLink
@@ -11,11 +15,37 @@ const Navbar = () => {
                 isPending ? "pending" : isActive ? "active" : ""
             }
         >Home</NavLink></li>
-        <li><NavLink to='/addProduct' >Add Product</NavLink></li>
-        <li><NavLink to='/myCart'>My Cart</NavLink></li>
+        {
+            user && <>
+                <li><NavLink to='/addProduct' >Add Product</NavLink></li>
+                <li><NavLink to='/myCart'>My Cart</NavLink></li>
+            </>
+        }
+        
         <li><NavLink to='/ex'>Extra1</NavLink></li> 
         <li><NavLink to='/ex2'>Extra2</NavLink></li>
     </>
+    // login out
+    const handleLogout = () => {
+        loginOut()
+        .then(() => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+            icon: 'success',
+            title: 'logout completed'
+            })
+        })
+    }
 
     return (
         <div>
@@ -44,31 +74,40 @@ const Navbar = () => {
                     {/* mobile device */}
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost px-0 md:hidden">
-                            {/* <img src='image' className=" w-12 h-12 rounded-full " alt="not found" />  */}
-                            
-                            <Link to='/login' className=" bg-[#82b440] px-5 py-2 rounded-lg font-medium hover:bg-[#538b0b]">Login</Link>
+                                {
+                                    user ? <img src={user?.photoURL} className=" w-12 h-12 rounded-full " alt="not found" /> 
+                                        
+                                    :<Link to='/login' className=" bg-[#82b440] px-5 py-2 rounded-lg font-medium hover:bg-[#538b0b]">Login</Link>
+                                }
                             
                         </label>
-                        <ul tabIndex={0} className="menu-sm dropdown-content mt-3 z-[1] py-3 shadow bg-[#042754] rounded-box w-40  ">
-                                <li className=" text-center">
-                                    
-                                <div className=" md:flex items-center gap-2 mr-4">
-                                    <h4>User name</h4>
-                                </div> 
-                                <Link to='/login' className=" bg-[#82b440] px-2 py-1 rounded-lg font-medium hover:bg-[#538b0b]">Sign Out</Link>
+                        <ul tabIndex={0} className="menu-sm dropdown-content mt-3 z-[1] py-3 shadow bg-[#030610e3] rounded-box w-40  ">
+                            <li className=" text-center">
+                                {
+                                    user && <>
+                                        <div className=" md:flex items-center gap-2 mr-4">
+                                            <h4>{ user?.displayName}</h4>
+                                        </div> 
+                                        <Link to='/login' onClick={handleLogout} className=" bg-[#82b440] px-2 py-1 rounded-lg font-medium hover:bg-[#538b0b]">Sign Out</Link>
+                                    </>   
+                                }   
+                                
                             </li>
                         </ul>
 
                     </div>
                     {/* medium and large device */}
-                    <div className="navbar-right hidden md:flex ">
-                            {/* <div className="flex items-center gap-2 mr-4">
-                                <h4>user name</h4>
-                                <img src="photo" className=" w-12 h-12 rounded-full " alt="not found" />
-                            </div> 
-                            <Link to='/login' className=" bg-[#82b440] px-3 py-3 rounded-lg font-medium ">Sign Out</Link> */}
-                                    
-                        <Link to='/login' className=" bg-[#82b440] px-5 py-2  rounded-lg font-medium hover:bg-[#538b0b]">Login</Link>
+                        <div className="navbar-right hidden md:flex ">
+                            {
+                                user ? <>
+                                    <div className="flex items-center gap-2 mr-4">
+                                        <h4>{ user?.displayName}</h4>
+                                        <img src={ user?.photoURL} className=" w-12 h-12 rounded-full " alt="not found" />
+                                    </div> 
+                                    <Link to='/login' onClick={handleLogout} className=" bg-[#82b440] px-3 py-3 rounded-lg font-medium ">Sign Out</Link>
+                                </>
+                                :<Link to='/login' className=" bg-[#82b440] px-5 py-2  rounded-lg font-medium hover:bg-[#538b0b]">Login</Link>
+                            }
                     </div>
                 </div>
             </div>

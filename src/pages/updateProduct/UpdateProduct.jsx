@@ -18,7 +18,6 @@ const UpdateProduct = () => {
         const category = form.category.value;
         const price = form.price.value;
         const rating = form.rating.value;
-        const short_description = form.short_description.value;
         const productUpdateData = {
             product_name,
             product_image,
@@ -26,7 +25,6 @@ const UpdateProduct = () => {
             category,
             price,
             rating,
-            short_description
         }
         fetch(`http://127.0.0.1:5000/product/${id}`, {
             method: 'PUT',

@@ -57,9 +57,9 @@ const BrandProduct = () => {
                                 <h2 className=" font-medium text-base"><span className=" text-[#82b440]">Price: </span>     {singleBrandName.price} Tk</h2>
 
                                 <h2 className=" font-medium text-base"> <span className=" text-[#82b440]">Category: </span>{singleBrandName.category} </h2>
-                                <h2 className=" font-medium text-base">{singleBrandName.rating} </h2>
 
-                                <h2 className=" font-medium text-base">{singleBrandName.short_description.slice(0, 60)}..</h2>
+                                <h2 className=" font-medium text-base"><span className=" text-[#82b440]">Rating: </span> {singleBrandName.rating} </h2>
+
                                 
                                 <div className="card-actions justify-end my-3">
                                     <Link to={`/productDetails/${singleBrandName._id}`} className="bg-[#82b440] px-5 py-3 rounded-lg font-medium hover:bg-[#538b0b] text-white normal-case">Details</Link>
