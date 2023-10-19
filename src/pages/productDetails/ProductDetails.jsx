@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Swal from "sweetalert2";
+import ReactStars from "react-rating-stars-component";
 
 const ProductDetails = () => {
     const productData = useLoaderData();
@@ -57,7 +58,21 @@ const ProductDetails = () => {
 
                         <h2 className=" font-medium text-xl"> <span className=" text-[#82b440]">Category: </span>{singleProduct.category} </h2>
 
-                        <h2 className=" font-medium text-xl"><span className=" text-[#82b440]">Rating: </span> {singleProduct.rating} </h2>
+                        {/* <h2 className=" font-medium text-xl"><span className=" text-[#82b440]">Rating: </span> {singleProduct.rating} </h2> */}
+                        <div>
+                            <ReactStars
+                                value={singleProduct.rating}
+                                count={5}
+                                size={24}
+                                isHalf={true}
+                                emptyIcon={<i className="far fa-star"></i>}
+                                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                fullIcon={<i className="fa fa-star"></i>}
+                                activeColor="#ffd700"
+                                onChange={singleProduct.rating}
+                                edit={false }
+                            />
+                        </div>
 
                         
                         <div className="card-actions my-3">

@@ -2,13 +2,24 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import PropTypes from 'prop-types';
+import { Circles } from 'react-loader-spinner';
 
 const PrivateRoutes = ({children}) => {
     const { user, loading } = useContext(AuthContext);
     
     if (loading) {
         return <>
-            <h2 className=" text-red-500">Loading........</h2>
+            <div className=" grid justify-center mt-20">
+                <Circles
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="circles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
+            </div>
         </>
     }
 

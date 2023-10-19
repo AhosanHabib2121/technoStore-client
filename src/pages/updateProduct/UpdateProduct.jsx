@@ -50,7 +50,7 @@ const UpdateProduct = () => {
                     <div className="card w-full max-w-3xl  mx-auto">
                         <form onSubmit={handleSubmit} className="card-body">
                             {/* name and product_image */}
-                            <div className="flex gap-4">
+                            <div className="flex flex-col md:flex-row gap-4">
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text text-lg font-semibold text-[#82b440]">Product Name</span>
@@ -67,7 +67,7 @@ const UpdateProduct = () => {
                             </div>
 
                             {/* brand name and category */}
-                            <div className="flex gap-4">
+                            <div className="flex flex-col md:flex-row gap-4">
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text text-lg font-semibold text-[#82b440]">Brand Name</span>
@@ -84,7 +84,7 @@ const UpdateProduct = () => {
                             </div>
 
                             {/* price and rating */}
-                            <div className="flex gap-4">
+                            <div className="flex flex-col md:flex-row gap-4">
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text text-lg font-semibold text-[#82b440]">Price</span>
