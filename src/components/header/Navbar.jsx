@@ -15,15 +15,8 @@ const Navbar = () => {
                 isPending ? "pending" : isActive ? "active" : ""
             }
         >Home</NavLink></li>
-        {
-            user && <>
-                <li><NavLink to='/addProduct' >Add Product</NavLink></li>
-                <li><NavLink to='/myCart'>My Cart</NavLink></li>
-            </>
-        }
-        
-        <li><NavLink to='/ex'>Extra1</NavLink></li> 
-        <li><NavLink to='/ex2'>Extra2</NavLink></li>
+        <li><NavLink to='/addProduct' >Add Product</NavLink></li>
+        <li><NavLink to='/myCart'>My Cart</NavLink></li>
     </>
     // login out
     const handleLogout = () => {

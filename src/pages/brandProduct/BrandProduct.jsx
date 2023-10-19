@@ -1,21 +1,10 @@
 import { useNavigate , useLoaderData, Link,  } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import sliderPhoto from '../../assets/techno-banner.jpg'
-import { useEffect } from "react";
 
 const BrandProduct = () => {
     const brandNameData = useLoaderData();
-    // const navigate = useNavigate();
-    // console.log(brandNameData);
-    
-    // useEffect(() => {
-    //     if (brandNameData == '') {
-    //         console.log('data nai');
-    //         alert('data nai');
-    //         navigate("/");
-    // }
-    // }, [brandNameData, navigate])
-    
+
     return (
         <div className=" font-robotFont">
             {/* banner */}

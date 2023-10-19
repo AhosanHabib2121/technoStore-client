@@ -16,7 +16,7 @@ const ErrorMessage = () => {
                 <h2 className=" text-[#82b440] text-center text-5xl font-extrabold">{error.status}</h2>
                 
                 <h3 className=" text-lg text-center">Oops, it looks like you are lost ...</h3>
-                <div className=" text-center">
+                <div className=" text-center pt-4">
                     <Link to='/' className="bg-[#82b440] px-4 py-3 rounded-lg font-medium hover:bg-[#538b0b] text-white">BACKTOHOME</Link>
                 </div>
             </div>

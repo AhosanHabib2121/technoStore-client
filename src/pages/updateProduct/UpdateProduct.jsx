@@ -6,11 +6,10 @@ const UpdateProduct = () => {
     const productData = useLoaderData();
     const { id } = useParams();
     const singleProduct = productData.find(product => product._id === id);
-    const {product_name, product_image, brand_name, category, price, rating, } = singleProduct;
+    const {product_name, product_image, brand_name, category, price, rating,} = singleProduct;
     
     const handleSubmit = e => {
         e.preventDefault();
-          e.preventDefault();
         const form = e.target;
         const product_name = form.product_name.value;
         const product_image = form.product_image.value;
