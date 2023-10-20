@@ -66,8 +66,8 @@ const Register = () => {
                                 title: 'Account create successfully'
                                 })
                                 form.reset();
-                                navigate('/');
                             }
+                            navigate('/');
                         })
                     })
             })

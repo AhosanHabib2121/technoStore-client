@@ -1,5 +1,6 @@
 import BrandName from "../../components/Brand-name/BrandName";
 import Banner from "../../components/banner/Banner";
+import DealSection from "../../components/dealSection/DealSection";
 import Footer from "../../components/footer/Footer";
 import OurProduct from "../../components/ourProduct/OurProduct";
 
@@ -15,7 +16,10 @@ const Home = () => {
                 <BrandName />
 
                 {/*our product section here  */}
-                <OurProduct/>
+                <OurProduct />
+                
+                {/*Deals section here  */}
+                <DealSection/>
 
             </div>
             {/* footer section here */}

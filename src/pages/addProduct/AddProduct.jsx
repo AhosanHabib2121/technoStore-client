@@ -102,7 +102,7 @@ const AddProduct = () => {
                                     <label className="label">
                                         <span className="label-text text-lg font-semibold text-[#82b440]">Short Description</span>
                                     </label>
-                                    <textarea name="short_description" placeholder="product short description" className="textarea textarea-bordered" id="" cols="30" rows="4"></textarea>
+                                    <textarea name="short_description" placeholder="product short description" className="textarea textarea-bordered" id="" cols="30" rows="4" required></textarea>
                                 </div>
                             </div>
                         <div className=" mt-8 text-right">
