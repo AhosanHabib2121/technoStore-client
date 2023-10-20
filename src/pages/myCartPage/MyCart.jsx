@@ -39,7 +39,7 @@ const MyCart = () => {
 
     return (
         <div className=" bg-base-200 font-robotFont">
-            <div className=" max-w-6xl md:mx-auto px-10 lg:px-0 py-12">
+            <div className=" max-w-6xl mx-auto px-10 lg:px-0 py-12">
                 <div className="">
                     {
                         (cartData == '') && <div className=" text-center mb-5">
@@ -47,7 +47,7 @@ const MyCart = () => {
                         </div>
                     }
 
-                    <table className="table border-collapse border border-[#82b440] ">
+                    <table className=" w-full border-collapse border border-[#82b440] ">
                         {/* head */}
                         <thead  className=" bg-[#82b440] text-white text-lg h-20">
                         <tr>

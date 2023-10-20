@@ -21,11 +21,9 @@ const Footer = () => {
             </nav> 
             <nav>
                 <header className="footer-title text-base">Company</header> 
-                <Link className="link link-hover hover:text-[#82b440]">Home</Link> 
-                <Link className="link link-hover hover:text-[#82b440]">Add Product</Link> 
-                <Link className="link link-hover hover:text-[#82b440]">My Cart</Link> 
-                <Link className="link link-hover hover:text-[#82b440]">Extra1</Link>
-                <Link className="link link-hover hover:text-[#82b440]">Extra2</Link>
+                <Link to={'/'} className="link link-hover hover:text-[#82b440]">Home</Link> 
+                <Link to={'/addProduct'} className="link link-hover hover:text-[#82b440]">Add Product</Link> 
+                <Link to={'/myCart'} className="link link-hover hover:text-[#82b440]">My Cart</Link> 
             </nav> 
             <nav>
                 <header className="footer-title text-base">Legal</header> 

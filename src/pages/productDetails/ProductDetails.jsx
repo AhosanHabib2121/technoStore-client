@@ -58,7 +58,6 @@ const ProductDetails = () => {
 
                         <h2 className=" font-medium text-xl"> <span className=" text-[#82b440]">Category: </span>{singleProduct.category} </h2>
 
-                        {/* <h2 className=" font-medium text-xl"><span className=" text-[#82b440]">Rating: </span> {singleProduct.rating} </h2> */}
                         <div>
                             <ReactStars
                                 value={singleProduct.rating}
@@ -73,7 +72,6 @@ const ProductDetails = () => {
                                 edit={false }
                             />
                         </div>
-
                         
                         <div className="card-actions my-3">
                             <button onClick={handleAddToCart}  className="bg-[#82b440] px-5 py-3 rounded-lg font-medium hover:bg-[#538b0b] text-white normal-case">Add to cart</button>
