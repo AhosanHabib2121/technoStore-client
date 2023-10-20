@@ -11,7 +11,7 @@ const BrandAdd = () => {
             brand_name,
             brand_image,
         }
-        fetch('http://127.0.0.1:5000/product', {
+        fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/product', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(brandData),

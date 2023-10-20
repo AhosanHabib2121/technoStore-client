@@ -32,7 +32,7 @@ const Login = () => {
                             password,
                             lastLoginAt
                         }
-                fetch('http://127.0.0.1:5000/user', {
+                fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/user', {
                     method: 'PATCH',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userData)

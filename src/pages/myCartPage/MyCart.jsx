@@ -10,7 +10,7 @@ const MyCart = () => {
 
     // delete cart product
     const handleCartDelete = cartId => {
-        fetch(`http://127.0.0.1:5000/cart/${cartId}`, {
+        fetch(`https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/cart/${cartId}`, {
             method: 'DELETE',
         })
         .then(res => res.json())

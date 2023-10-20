@@ -21,7 +21,7 @@ const myCreateRouter = createBrowserRouter([
         {
             path: '/',
             element: <Home />,
-            loader:() => fetch('http://127.0.0.1:5000/brand')
+            loader:() => fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/brand')
         },
         {
             path: '/addProduct',
@@ -39,26 +39,23 @@ const myCreateRouter = createBrowserRouter([
         {
             path: '/brandProduct/:brand_name',
             element: <BrandProduct />,
-            loader: ({params}) => fetch(`http://127.0.0.1:5000/product/${params.brand_name}`)
+            loader: ({params}) => fetch(`https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/product/${params.brand_name}`)
         },
         {
             path: '/updateProduct/:id',
             element: <PrivateRoutes><UpdateProduct /></PrivateRoutes>,
-            loader: () => fetch('http://127.0.0.1:5000/product')
+            loader: () => fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/product')
         },
         {
             path: '/productDetails/:id',
             element: <PrivateRoutes><ProductDetails /></PrivateRoutes>,
-            loader: () => fetch('http://127.0.0.1:5000/product')
+            loader: () => fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/product')
         },
         {
             path: '/myCart',
             element: <PrivateRoutes><MyCart /></PrivateRoutes>,
-            loader: () => fetch('http://127.0.0.1:5000/cart')
+            loader: () => fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/cart')
         },
-
-
-
 
 
 

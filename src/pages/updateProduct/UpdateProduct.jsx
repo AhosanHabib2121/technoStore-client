@@ -25,7 +25,7 @@ const UpdateProduct = () => {
             price,
             rating,
         }
-        fetch(`http://127.0.0.1:5000/product/${id}`, {
+        fetch(`https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/product/${id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body:JSON.stringify(productUpdateData),

@@ -9,7 +9,7 @@ const OurProduct = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/product')
+        fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/product')
             .then(res => res.json())
             .then(data => setOurProduct(data))
     }, [])
@@ -30,7 +30,7 @@ const OurProduct = () => {
             price,
             rating
         }
-        fetch('http://127.0.0.1:5000/cart', {
+        fetch('https://techno-store-server-ass10-hfz4nucf3-habibs-projects-f48ee51a.vercel.app/cart', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body:JSON.stringify(dataAddToCart),
