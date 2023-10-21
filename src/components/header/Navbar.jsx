@@ -91,19 +91,18 @@ const Navbar = ({setChangeMode, changeMode }) => {
                                 }
                             
                         </label>
-                        <ul tabIndex={0} className="menu-sm dropdown-content mt-3 z-[1] py-3 shadow bg-[#030610e3] rounded-box w-40  ">
-                            <li className=" text-center">
-                                {
-                                    user && <>
-                                        <div className=" md:flex items-center gap-2 mr-4">
-                                            <h4>{ user?.displayName}</h4>
-                                        </div> 
-                                        <Link to='/login' onClick={handleLogout} className=" bg-[#82b440] px-2 py-1 rounded-lg font-medium hover:bg-[#538b0b]">Sign Out</Link>
-                                    </>   
-                                }   
-                                
-                            </li>
-                        </ul>
+                        {
+                            user?<ul tabIndex={0} className="menu-sm dropdown-content mt-3 z-[1] py-3 shadow bg-[#030610e3] rounded-box w-40  ">
+                                <li className=" text-center">
+                                    <div className=" md:flex items-center gap-2 mr-4">
+                                        <h4>{ user?.displayName}</h4>
+                                    </div> 
+                                    <Link to='/login' onClick={handleLogout} className=" bg-[#82b440] px-2 py-1 rounded-lg font-medium hover:bg-[#538b0b]">Sign Out</Link>
+                                    
+                                </li>
+                            </ul>
+                            :''            
+                        }
 
                     </div>
                     {/* medium and large device */}
