@@ -42,7 +42,7 @@ const Register = () => {
                             password,
                             createdAt
                         }
-                        fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/user', {
+                        fetch('https://techno-store-server-ass10.vercel.app/user', {
                             method: 'POST',
                             headers: { 'content-type': 'application/json' },
                             body:JSON.stringify(userData)

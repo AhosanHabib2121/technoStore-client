@@ -20,8 +20,8 @@ const myCreateRouter = createBrowserRouter([
     children: [
         {
             path: '/',
-            element: <Home />,
-            loader:() => fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/brand')
+            element: <Home/>,
+            loader:() => fetch('https://techno-store-server-ass10.vercel.app/brand')
         },
         {
             path: '/addProduct',
@@ -38,23 +38,23 @@ const myCreateRouter = createBrowserRouter([
        
         {
             path: '/brandProduct/:brand_name',
-            element: <BrandProduct />,
-            loader: ({params}) => fetch(`https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/product/${params.brand_name}`)
+            element: <BrandProduct/>,
+            loader: ({params}) => fetch(`https://techno-store-server-ass10.vercel.app/product/${params.brand_name}`)
         },
         {
             path: '/updateProduct/:id',
-            element: <PrivateRoutes><UpdateProduct /></PrivateRoutes>,
-            loader: () => fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/product')
+            element: <PrivateRoutes><UpdateProduct/></PrivateRoutes>,
+            loader: () => fetch('https://techno-store-server-ass10.vercel.app/product')
         },
         {
             path: '/productDetails/:id',
-            element: <PrivateRoutes><ProductDetails /></PrivateRoutes>,
-            loader: () => fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/product')
+            element: <PrivateRoutes><ProductDetails/></PrivateRoutes>,
+            loader: () => fetch('https://techno-store-server-ass10.vercel.app/product')
         },
         {
             path: '/myCart',
-            element: <PrivateRoutes><MyCart /></PrivateRoutes>,
-            loader: () => fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/cart')
+            element: <PrivateRoutes><MyCart/></PrivateRoutes>,
+            loader: () => fetch('https://techno-store-server-ass10.vercel.app/cart')
         },
 
 

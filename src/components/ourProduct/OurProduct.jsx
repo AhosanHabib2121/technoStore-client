@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import ReactStars from "react-rating-stars-component";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import Swal from "sweetalert2";
+
+import ReactStars from "react-rating-stars-component";
 
 const OurProduct = () => {
 
@@ -9,7 +10,7 @@ const OurProduct = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/product')
+        fetch('https://techno-store-server-ass10.vercel.app/product')
             .then(res => res.json())
             .then(data => setOurProduct(data))
     }, [])
@@ -30,7 +31,7 @@ const OurProduct = () => {
             price,
             rating
         }
-        fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/cart', {
+        fetch('https://techno-store-server-ass10.vercel.app/cart', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body:JSON.stringify(dataAddToCart),

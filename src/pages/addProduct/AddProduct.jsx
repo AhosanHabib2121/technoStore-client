@@ -21,7 +21,7 @@ const AddProduct = () => {
             rating,
             short_description
         }
-        fetch('https://techno-store-server-ass10-j3ilwbepb-habibs-projects-f48ee51a.vercel.app/product', {
+        fetch('https://techno-store-server-ass10.vercel.app/product', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body:JSON.stringify(productData),
