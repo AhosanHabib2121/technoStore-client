@@ -91,7 +91,7 @@ const Login = () => {
             <div className="pb-20 pt-14 px-8 md:px-0">
                 <div className="flex-col py-5 border border-[#82b440] rounded-md max-w-lg mx-auto ">
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold pt-6 text-[#82b440]">Login now!</h1>
+                        <h1 className="text-5xl font-bold pt-6 text-[#82b440] " >Login now!</h1>
                     </div>
                     <div className=' px-8 py-5'>
                         {
@@ -127,8 +127,7 @@ const Login = () => {
                         <div className=" relative text-center mt-5">
                             <FcGoogle className=" text-3xl absolute top-2 left-16 md:left-36 " />
                             <button onClick={handleGoogle} className="btn bg-inherit hover:bg-inherit  outline-1  normal-case rounded-full w-64 border-gray-400">Continue with Google</button>
-                            
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>

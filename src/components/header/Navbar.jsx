@@ -68,7 +68,6 @@ const Navbar = ({setChangeMode, changeMode }) => {
                 <div className="navbar-end ">
                     <div className=" mr-3 md:mr-4">
                         <label className="swap swap-rotate">
-  
                             {/* this hidden checkbox controls the state */}
                             <input type="checkbox" onClick={() => setChangeMode(!changeMode)}/>
                             

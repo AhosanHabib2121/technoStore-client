@@ -2,7 +2,6 @@ import { Link, useRouteError } from "react-router-dom";
 
 const ErrorMessage = () => {
     const error = useRouteError()
-    console.log();
 
     return (
         <div className=" font-robotFont max-w-7xl md:mx-auto px-6 lg:px-0 my-14">

@@ -1,6 +1,6 @@
 Website live link : [https://techno-store-514ba.web.app/](https://techno-store-514ba.web.app/)
 
-## 5 Project features:
+## Project features:
 - First of all all packages for the website have been installed by tailwind css , daisyUI and router.
 
 - Creating band name card on home page and clicking on specific band will open new page and show band wise data.
